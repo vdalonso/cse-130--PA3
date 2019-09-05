@@ -121,6 +121,8 @@ simplifyZero (Op Plus (Lit 0) e2) = e2
 simplifyZero (Op Plus e1 (Lit 0)) = e1
 simplifyZero (Op b e1 e2) = (Op b e1 e2)
 simplifyZero (Lit x) = Lit x
+
+--simplifyZero x = x
     --question "[7 pts] COMPLETE THE DEFINITION"
 -- </FILL-IN>
 
