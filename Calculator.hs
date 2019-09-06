@@ -160,9 +160,6 @@ peephole simpZero (Lit x) = Lit x
 peephole simpZero (Op b (Lit 0) e) = simpZero (Op b (Lit 0) e)
 peephole simpZero (Op b e (Lit 0) ) = simpZero (Op b e (Lit 0))
 peephole simpZero (Op b e1 e2) = Op b (peephole simpZero e1) (peephole simpZero e2)
-
-
-
 --question "[8 pts] COMPLETE THE DEFINITION"
 -- </FILL-IN>
 
@@ -217,7 +214,15 @@ type Stack = [Int]
 
 step :: Instr -> Stack -> Maybe Stack
 -- <FILL-IN>
-step = question "[8 pts] COMPLETE THE DEFINITION"
+--grabs the integer given, appends it to the end of the stack
+step (IPush x) xs = Just (xs ++ [x])
+--interprets the BinOp , extracts the last element from the stack
+--and the second to last element of the stack and applies the BinOp to them
+--NOTE: this int so
+step (IOp b) xs = if ((length xs) >= 2)
+                    then Just ((init (init xs)) ++ [(interpBinOp b) (last xs) (last (init xs))])
+                    else Nothing
+--question "[8 pts] COMPLETE THE DEFINITION"
 -- </FILL-IN>
 
 -- We should also tie this together, and write a function that
@@ -228,7 +233,7 @@ step = question "[8 pts] COMPLETE THE DEFINITION"
 
 run :: [Instr] -> Stack -> Maybe Stack
 -- <FILL-IN>
-run = question "[12 pts] COMPLETE THE DEFINITION"
+run i xs = question "[12 pts] COMPLETE THE DEFINITION"
 -- </FILL-IN>
 
 -------------------------------------------------------------------
