@@ -233,7 +233,9 @@ step (IOp b) xs = if ((length xs) >= 2)
 
 run :: [Instr] -> Stack -> Maybe Stack
 -- <FILL-IN>
-run i xs = question "[12 pts] COMPLETE THE DEFINITION"
+run (i:ls) xs = (step i xs) >>= (run ls)
+run [] xs = Just xs
+    --question "[12 pts] COMPLETE THE DEFINITION"
 -- </FILL-IN>
 
 -------------------------------------------------------------------
