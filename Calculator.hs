@@ -256,7 +256,8 @@ run [] xs = Just xs
 
 compile :: Expr -> [Instr]
 -- <FILL-IN>
-compile = question "[10 pts] COMPLETE THE DEFINITION"
+compile x = 
+    --question "[10 pts] COMPLETE THE DEFINITION"
 -- </FILL-IN>
 
 -- Your compiler is correct if running the instructions produced
