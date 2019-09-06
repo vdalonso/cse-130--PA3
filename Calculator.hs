@@ -215,13 +215,13 @@ type Stack = [Int]
 step :: Instr -> Stack -> Maybe Stack
 -- <FILL-IN>
 --grabs the integer given, appends it to the end of the stack
-step (IPush x) xs = Just (xs ++ [x])
+step (IPush x) xs = Just (x:xs)
 --interprets the BinOp , extracts the last element from the stack
 --and the second to last element of the stack and applies the BinOp to them
 --NOTE: this int so
-step (IOp b) xs = if ((length xs) >= 2)
-                    then Just ((init (init xs)) ++ [(interpBinOp b) (last xs) (last (init xs))])
-                    else Nothing
+step (IOp b) (x:y:xs) = Just (((interpBinOp b) x y) : xs)
+step b _ = Nothing
+
 --question "[8 pts] COMPLETE THE DEFINITION"
 -- </FILL-IN>
 
