@@ -157,8 +157,6 @@ simplifyZero (Lit x) = Lit x
 peephole :: (Expr -> Expr) -> Expr -> Expr
 -- <FILL-IN>
 peephole simpZero (Lit x) = Lit x
-peephole simpZero (Op b (Lit 0) e) = simpZero (Op b (Lit 0) e)
-peephole simpZero (Op b e (Lit 0) ) = simpZero (Op b e (Lit 0))
 peephole simpZero (Op b e1 e2) = Op b (peephole simpZero e1) (peephole simpZero e2)
 --question "[8 pts] COMPLETE THE DEFINITION"
 -- </FILL-IN>
