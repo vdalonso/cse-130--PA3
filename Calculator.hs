@@ -254,13 +254,9 @@ run [] xs = Just xs
 
 compile :: Expr -> [Instr]
 -- <FILL-IN>
-<<<<<<< HEAD
-compile x = 
-=======
 compile (Op b x1 x2) = (compile x1) ++ (compile x2) ++ [IOp b]
 compile (Lit x) = [IPush x]
 
->>>>>>> b12f228d9c5414241f66b6327073faf041d8855b
     --question "[10 pts] COMPLETE THE DEFINITION"
 -- </FILL-IN>
 
