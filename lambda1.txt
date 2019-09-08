@@ -1,0 +1,4 @@
+\x.x
+\xy.x
+\xyz.(x (y z))
+\x.\y.\z.z a b c

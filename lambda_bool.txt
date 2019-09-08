@@ -1,0 +1,4 @@
+\ab.a
+\ab.b
+\b.(b (\ab.b \ab.a)) \ab.a
+\ab.(a b \ab.b) (\ab.a) \ab.a
