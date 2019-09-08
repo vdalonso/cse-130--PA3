@@ -157,8 +157,6 @@ simplifyZero (Lit x) = Lit x
 peephole :: (Expr -> Expr) -> Expr -> Expr
 -- <FILL-IN>
 peephole simpZero (Lit x) = Lit x
-peephole simpZero (Op b (Lit 0) e) = simpZero (Op b (Lit 0) e)
-peephole simpZero (Op b e (Lit 0) ) = simpZero (Op b e (Lit 0))
 peephole simpZero (Op b e1 e2) = Op b (peephole simpZero e1) (peephole simpZero e2)
 --question "[8 pts] COMPLETE THE DEFINITION"
 -- </FILL-IN>
@@ -215,13 +213,13 @@ type Stack = [Int]
 step :: Instr -> Stack -> Maybe Stack
 -- <FILL-IN>
 --grabs the integer given, appends it to the end of the stack
-step (IPush x) xs = Just (xs ++ [x])
+step (IPush x) xs = Just (x:xs)
 --interprets the BinOp , extracts the last element from the stack
 --and the second to last element of the stack and applies the BinOp to them
 --NOTE: this int so
-step (IOp b) xs = if ((length xs) >= 2)
-                    then Just ((init (init xs)) ++ [(interpBinOp b) (last xs) (last (init xs))])
-                    else Nothing
+step (IOp b) (x:y:xs) = Just (((interpBinOp b) y x) : xs)
+step b _ = Nothing
+
 --question "[8 pts] COMPLETE THE DEFINITION"
 -- </FILL-IN>
 
@@ -256,7 +254,13 @@ run [] xs = Just xs
 
 compile :: Expr -> [Instr]
 -- <FILL-IN>
+<<<<<<< HEAD
 compile x = 
+=======
+compile (Op b x1 x2) = (compile x1) ++ (compile x2) ++ [IOp b]
+compile (Lit x) = [IPush x]
+
+>>>>>>> b12f228d9c5414241f66b6327073faf041d8855b
     --question "[10 pts] COMPLETE THE DEFINITION"
 -- </FILL-IN>
 
